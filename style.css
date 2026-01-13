@@ -1,0 +1,398 @@
+/* Base Reset & Typography */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f4f5f7;
+    color: #172b4d;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+/* Layout */
+.container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 24px;
+}
+
+/* Header */
+header {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #091e42;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #5e6c84;
+    font-size: 16px;
+}
+
+/* Main Card */
+.recommendation-card {
+    background: white;
+    border: 1px solid #dfe1e6;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 1px 2px rgba(9, 30, 66, 0.05);
+}
+
+.status-badge {
+    display: inline-block;
+    background: #e3fcef;
+    color: #006644;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.recommendation-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #172b4d;
+}
+
+.recommendation-text {
+    color: #42526e;
+    margin-bottom: 24px;
+}
+
+/* Buttons */
+.primary {
+    background: #0052cc;
+    /* Classic B2B Blue */
+    color: white;
+    padding: 10px 20px;
+}
+
+.primary:hover {
+    background: #0065ff;
+}
+
+.primary.full-width {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.secondary {
+    background: white;
+    color: #42526e;
+    border: 1px solid #dfe1e6;
+    padding: 8px 16px;
+}
+
+.secondary:hover {
+    background: #ebecf0;
+}
+
+/* Panel */
+.panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 440px;
+    height: 100vh;
+    background: white;
+    box-shadow: -8px 0 16px rgba(9, 30, 66, 0.08);
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    border-left: 1px solid #ebecf0;
+}
+
+.panel.hidden {
+    transform: translateX(100%);
+}
+
+.panel-content {
+    padding: 32px;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #ebecf0;
+    padding-bottom: 20px;
+}
+
+.panel-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#closePanelBtn {
+    font-size: 28px;
+    color: #5e6c84;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#closePanelBtn:hover {
+    color: #172b4d;
+}
+
+/* Confidence Score */
+.confidence-score-container {
+    background: #f4f5f7;
+    padding: 24px;
+    border-radius: 6px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.score-display {
+    margin-bottom: 8px;
+}
+
+#scoreValue {
+    font-size: 48px;
+    font-weight: 700;
+    color: #0052cc;
+}
+
+.score-total {
+    font-size: 20px;
+    color: #5e6c84;
+    font-weight: 500;
+}
+
+.score-helper {
+    font-size: 13px;
+    color: #5e6c84;
+}
+
+/* Signals */
+.signals {
+    flex-grow: 1;
+}
+
+.signals h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #5e6c84;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+}
+
+.signal-item {
+    border-bottom: 1px solid #ebecf0;
+    padding: 16px 0;
+}
+
+.signal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signal-header label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #172b4d;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.signal-header input {
+    margin-right: 12px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.signal-points {
+    font-size: 13px;
+    color: #006644;
+    /* Green for points */
+    font-weight: 600;
+    background: #e3fcef;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Expandable Details */
+.signal-details {
+    margin-top: 8px;
+    margin-left: 28px;
+    /* Align with text */
+    font-size: 13px;
+    color: #5e6c84;
+    display: none;
+    /* Hidden by default */
+}
+
+.signal-item.expanded .signal-details {
+    display: block;
+}
+
+/* Actions */
+.actions {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #ebecf0;
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.secondary-actions button {
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    margin-top: 60px;
+    border-top: 1px solid #dfe1e6;
+    padding-top: 24px;
+}
+
+footer h4 {
+    font-size: 14px;
+    color: #172b4d;
+    margin-bottom: 8px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #5e6c84;
+    max-width: 600px;
+}
+
+/* Enhancements Styles */
+.score-status {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    min-height: 20px;
+    /* Prevent layout shift */
+}
+
+/* Hidden Content Utility */
+.hidden-content {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+/* CTA Results */
+.action-container {
+    margin-bottom: 8px;
+}
+
+.sources-list {
+    background: #f4f5f7;
+    border-radius: 4px;
+    padding: 12px 16px 12px 32px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #42526e;
+    border: 1px solid #ebecf0;
+}
+
+.sources-list li {
+    margin-bottom: 4px;
+}
+
+.escalation-text {
+    margin-top: 12px;
+    padding: 12px;
+    background: #fff0b3;
+    /* Warning yellow background */
+    color: #172b4d;
+    font-size: 13px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.success-message {
+    background: #e3fcef;
+    color: #006644;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid #abf5d1;
+}
+
+.success-subtext {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 4px;
+    color: #006644;
+}
+
+/* Explainability */
+.explainability {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px dashed #ebecf0;
+    font-size: 12px;
+}
+
+#explainLink {
+    color: #5e6c84;
+    text-decoration: none;
+    border-bottom: 1px dotted #5e6c84;
+    cursor: pointer;
+}
+
+#explainLink:hover {
+    color: #172b4d;
+    border-bottom-style: solid;
+}
+
+#explainText {
+    margin-top: 8px;
+    color: #5e6c84;
+    line-height: 1.4;
+    background: #f4f5f7;
+    padding: 8px;
+    border-radius: 4px;
+}

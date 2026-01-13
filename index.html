@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decision Confidence Layer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Decision Confidence Layer</h1>
+            <p class="subtitle">
+                Exploring how confidence signals help B2B users act on system recommendations
+            </p>
+        </header>
+
+        <main>
+            <div class="recommendation-card">
+                <div class="status-badge">Action Recommended</div>
+                <h2>Revoke access for Employee X</h2>
+                <p class="recommendation-text">
+                    System detects a policy violation due to recent role change.
+                </p>
+                <button id="openPanelBtn" class="primary">View Action Confidence</button>
+            </div>
+        </main>
+
+        <!-- Confidence Panel -->
+        <div id="confidencePanel" class="panel hidden">
+            <div class="panel-content">
+
+                <div class="panel-header">
+                    <h2>Action Confidence</h2>
+                    <span id="closePanelBtn">&times;</span>
+                </div>
+
+                <div class="confidence-score-container">
+                    <div class="score-display">
+                        <span id="scoreValue">100</span>
+                        <span class="score-total">/ 100</span>
+                    </div>
+                    <p class="score-helper">Based on data reliability, freshness, and impact</p>
+                    <div id="scoreStatus" class="score-status"></div>
+                </div>
+
+                <div class="signals">
+                    <h3>Confidence Signals</h3>
+
+                    <!-- Signal 1: Freshness -->
+                    <div class="signal-item">
+                        <div class="signal-header">
+                            <label>
+                                <input type="checkbox" id="freshness" checked>
+                                <span class="signal-name">Data updated within last 24 hours</span>
+                            </label>
+                            <span class="signal-points">+30</span>
+                        </div>
+                        <div id="freshnessDetails" class="signal-details">
+                            Based on access logs updated 3 hours ago
+                        </div>
+                    </div>
+
+                    <!-- Signal 2: Sources -->
+                    <div class="signal-item">
+                        <div class="signal-header">
+                            <label>
+                                <input type="checkbox" id="sources" checked>
+                                <span class="signal-name">≥ 3 verified internal sources</span>
+                            </label>
+                            <span class="signal-points">+25</span>
+                        </div>
+                        <div id="sourcesDetails" class="signal-details">
+                            Corroborated across HRIS, IAM, and audit logs
+                        </div>
+                    </div>
+
+                    <!-- Signal 3: Permissions -->
+                    <div class="signal-item">
+                        <div class="signal-header">
+                            <label>
+                                <input type="checkbox" id="permissions" checked>
+                                <span class="signal-name">Within your permission boundary</span>
+                            </label>
+                            <span class="signal-points">+25</span>
+                        </div>
+                        <div id="permissionsDetails" class="signal-details">
+                            Text: “Within your admin permission boundary”
+                        </div>
+                    </div>
+
+                    <!-- Signal 4: Impact -->
+                    <div class="signal-item">
+                        <div class="signal-header">
+                            <label>
+                                <input type="checkbox" id="reversible" checked>
+                                <span class="signal-name">Action is reversible</span>
+                            </label>
+                            <span class="signal-points">+20</span>
+                        </div>
+                        <div id="reversibleDetails" class="signal-details">
+                            Access can be restored within 24 hours if needed
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="actions">
+                    <div id="proceedContainer" class="action-container">
+                        <button id="proceedBtn" class="primary full-width">Proceed with action</button>
+                    </div>
+                    <div class="secondary-actions">
+                        <button id="reviewBtn" class="secondary">Review sources</button>
+                        <button id="escalateBtn" class="secondary">Escalate to admin</button>
+                    </div>
+                    <div id="reviewSourcesList" class="hidden-content sources-container">
+                        <ul class="sources-list">
+                            <li>HRIS access logs</li>
+                            <li>IAM policy configuration</li>
+                            <li>Role change history</li>
+                        </ul>
+                    </div>
+                    <div id="escalationMsg" class="hidden-content escalation-text">
+                        Escalated to Security Admin · SLA: 4 hours
+                    </div>
+                </div>
+
+                <div class="explainability">
+                    <a href="#" id="explainLink">How is this score calculated?</a>
+                    <p id="explainText" class="hidden-content">
+                        Score is derived from freshness, source reliability, permission scope, and reversibility using
+                        fixed
+                        weights.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <h4>Why this exists</h4>
+            <p>
+                Many B2B users hesitate to act even when systems are technically correct. This prototype explores how
+                lightweight confidence signals can help users make faster, safer decisions.
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
